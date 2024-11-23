@@ -7,23 +7,37 @@ import { SearchVidoes } from '@/util/fetchData'
 import { useState } from 'react'
 
 const SearchBar = () => {
-    const [ count, setCount ] = useState(0);
+    
+    const [ loading, setLoading ] = useState(false)
+    const [ result, setResult ] = useState([])
+    const  [ query, setQuery ] = useState("")
 
-    function update() {
-        setCount(count+1)
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        setLoading(true)
+
+        const data = await SearchVidoes(`search/?query=${query}`)
+        consle.log(data)
+        setResult(data)
+        setLoading(false)
     }
+
   return (
     <div>
-        <form>
-        <input type="text" placeholder='search..'/>
+        <form onSubmit={handleSearch}>
+        <input type="text" placeholder='search..'
+         value={query}
+         onChange={(e) => setQuery(e.target.value)}
+        />
         <button>
         search
       </button>
         </form>
-         <h1>{count}</h1>
-         <button onclick={update}>
-            update count
-         </button>
+        
+        {
+         loading ? <p>loading  </p> : null         
+        }
+        
     </div>
   )
 }
