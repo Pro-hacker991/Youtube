@@ -17,8 +17,8 @@ const SearchBar = () => {
         setLoading(true)
 
         const data = await SearchVidoes(`search/?query=${query}`)
-        consle.log(data)
-        setResult(data)
+        console.log(data)
+        setResult(data.videos)
         setLoading(false)
     }
 
@@ -27,17 +27,26 @@ const SearchBar = () => {
         <form onSubmit={handleSearch}>
         <input type="text" placeholder='search..'
          value={query}
-         onChange={(e) => setQuery(e.target.value)}data
+         onChange={(e) => setQuery(e.target.value)}
         />
         <button>
-        search
-      </button>
+         Search
+       </button>
         </form>
         
         {
-         loading ? <p>loading  </p> : null         
+         loading ? <p>loading...</p> : null         
         }
         
+
+        {
+          result.map((eachItem, index, array) => (
+            <div key={index}>
+              <h1>{eachItem.title}</h1>
+              <img src={eachItem.thumbnails[0].url} alt="image" />
+            </div>
+          ))
+        }
     </div>
   )
 }
