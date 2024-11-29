@@ -5,11 +5,16 @@
 import React from 'react'
 import { SearchVidoes } from '@/util/fetchData'
 import { useState } from 'react'
+import { SearchContext } from '@/contexts/SearchContext'
+import Image from 'next/image'
+import { useContext } from 'react'
 
 const SearchBar = () => {
+
+  const { result, setResult } = useContext(SearchContext)
     
     const [ loading, setLoading ] = useState(false)
-    const [ result, setResult ] = useState([])
+    // const [ result, setResult ] = useState([])
     const  [ query, setQuery ] = useState("")
 
     const handleSearch = async (e) => {
