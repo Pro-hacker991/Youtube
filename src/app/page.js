@@ -2,7 +2,7 @@
 "use client"
 
 import React, { useState } from "react";
-import Navbar from "@/components/Navbar_components/Navbar";
+import Navbar from "@/components/Navbar components/Navbar";
 import Feeds from "@/components/MainContent/Feeds";
 import SideBar from "@/components/SideContents/SideBar";
 

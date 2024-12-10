@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import MiniSideBar from './MiniSideBar'
+import MaxiSideBar from './MaxiSideBar'
+import { SideContext } from '@/contexts/SideContexts'
+import { useContext } from 'react'
 
 const SideBar = () => {
+
+  const {  toggle, setToggle } = useContext(SideContext)
+
   return (
     <div>
-      SideBar
+      {
+        toggle ? <MaxiSideBar/> : <MiniSideBar/>   
+      }
+
     </div>
   )
 }
