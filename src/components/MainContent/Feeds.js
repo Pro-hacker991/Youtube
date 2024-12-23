@@ -24,8 +24,10 @@ const Feeds = () => {
           <div key={index} className={styles.content}>  
             {
               playingVideo === eachItem.video_id ? 
-              <iframe>
-             
+              <iframe
+              src={`https://www.youtube.com/embed/${eachItem.video_id}`}
+              // frameborder="0"
+              >
               </iframe>
               :
               (
